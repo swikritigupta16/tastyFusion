@@ -1,0 +1,32 @@
+img
+{
+    width:350px;
+    height:300px;
+}
+
+
+.single-popular-items{
+    border:5px solid black;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.popular-img{
+    border:3px solid green;
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+h3{
+    margin-left: 10px;
+    float:left;
+}
+
+span{
+    margin-right:10px;
+    float:right;
+}

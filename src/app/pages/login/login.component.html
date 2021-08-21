@@ -1,0 +1,58 @@
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ 
+  <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+      <div class="card login-card">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <img src="assets/img/login.jpeg" alt="login" class="login-card-img">
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <div class="brand-wrapper">
+                <img src="assets/img/logo1.jpeg" alt="logo" class="logo" height="50px" width="50px">
+              </div>
+              <p class="login-card-description">ACCOUNT LOGIN</p>
+              <form action="get" name="form" (ngSubmit)="f.form.valid && checkLogin()" #f="ngForm"> 
+                  <div class="form-group">
+                             
+                    <span *ngIf = "f.submitted && email.invalid && email.errors.required" style="color:red">&nbsp;&nbsp;*Email is required</span>
+                    <span *ngIf = "f.submitted && email.invalid && email.errors.email" style="color:red"> *Email must be a valid email address</span>
+
+                    <input type="text" name="email" name="email" [(ngModel)] = "model.email" #email = "ngModel" required email
+                     class="form-control" placeholder="Email address">
+                  </div>
+                  
+                  <div class="form-group mb-4">
+                    <label for="password" class="sr-only">Password</label>
+
+                    <span *ngIf = "f.submitted && password.invalid && password.errors.required" style="color:red">&nbsp;&nbsp;*Password is required</span>
+                    <input type="password" name="password" [(ngModel)] = "model.password" class="form-control" placeholder="Password" #password = "ngModel" required>
+                  
+
+                  </div>
+                  <button type= "submit" name = "submit" (click) = "checkLogin()" class="btn btn-block login-btn mb-4">Login</button>
+                </form>
+
+                <div class="forgot-password-link" (click)="forgetPassword()">Forgot password?</div>
+
+                <p class="login-card-footer-text">Don't have an account? 
+                  <a routerLink = '/register' class="text-reset">Register here</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+     
+ </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

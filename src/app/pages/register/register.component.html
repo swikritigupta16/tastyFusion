@@ -1,0 +1,72 @@
+<div class="wrapper" style="background-image: url('assets/img/bg-registration-form-3.jpg');">
+    <div class="inner">
+        <form action="" name="form" (ngSubmit)="f.form.valid && createAccount()" #f="ngForm">
+            <h3>Registration Form</h3>
+            <div class="form-group">
+                <div class="form-wrapper">
+
+                   <label for="">Full Name:</label>
+                    <div class="form-holder">
+                         
+                        <input type="text" class="form-control" name="name"
+                         [(ngModel)] = "model.name" #name = "ngModel" required name>
+                    </div>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Email:</label>
+                    <div class="form-holder">
+
+                        <span *ngIf = "f.submitted && email.invalid && email.errors.required" 
+                        style="color:red">&nbsp;&nbsp;*Email is required</span>
+                        <span *ngIf = "f.submitted && email.invalid && email.errors.email" 
+                        style="color:red"> *Email must be a valid email address</span>
+                        
+                        <input type="text" class="form-control" name="email"
+                         [(ngModel)]="model.email" #email = "ngModel" required email>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-wrapper">
+                    <label for="">Password:</label>
+                    <div class="form-holder">
+
+                        <span *ngIf = "f.submitted && password.invalid && password.errors.required" 
+                        style="color:red">&nbsp;&nbsp;*Password is required</span>
+                        <input type="password" class="form-control" name="password"
+                         [(ngModel)]="model.password" #password = "ngModel" required>
+                    </div>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Phone Number:</label>
+                    <div class="form-holder">
+                        
+                        <input type="text" class="form-control" name="phone"
+                         [(ngModel)]="model.phone">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-wrapper">
+                <label for="">Address:</label>
+                <div class="form-holder">
+                  
+                    <input type="text" class="form-control"  name="address" [(ngModel)]="model.address">
+                </div>
+            </div>
+            
+            <div class="form-end">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> I hereby certify that the information given above is complete and accurate to the best of my knowledge.
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="button-holder">
+                    <button type="submit"  name="submit" >Register Now</button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>

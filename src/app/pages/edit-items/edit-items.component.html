@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8"><h2>Item <b>Details</b></h2></div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-info add-new" (click) = "createNew()"><i class="fa fa-plus"></i> Add New</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ITEM_ID</th>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                    <th>IMG PATH</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let item of items">
+                    <td>{{item.i_id}}</td>
+                    <td *ngIf = "!item.isEditable">{{item.Name}}</td>
+                    <td *ngIf = "item.isEditable"><input type="text" *ngIf = "item.isEditable" class="form-control" 
+                     [(ngModel)] ="item.Name" value="item.Name"></td>
+                    <td *ngIf = "!item.isEditable">{{item.price}}</td>
+                    <td *ngIf = "item.isEditable"><input type="text" *ngIf = "item.isEditable" class="form-control" 
+                        [(ngModel)] ="item.price" value="item.price"></td>
+                    
+                    <td width = "5%">
+                     <input type="file" class="form-control" name="imgPath" [(ngModel)] = "item.imgPath" accept="image/*" (change) = "readUrlEdit($event, item)">      
+                         <img src="../assets/img/{{item.imgPath}}" style="width:50px;height:50px">
+                    </td>
+                    <td>
+                        <a *ngIf = "item.isEditable" class="add" (click) = "update(item)" title="Save" ngbTooltip = "Save"><i class="material-icons">&#xe161;</i></a>
+                        <a *ngIf = "!item.isEditable"class="edit" (click) = "setEditState(item,true)" title="Edit" ngbTooltip = "Edit"><i class="material-icons">&#xE254;</i></a>
+                        <a *ngIf = "item.isEditable" class="cancel" (click) = "setEditState(item,false)" title="Cancel" ngbTooltip = "Cancel"><i class="material-icons">&#xe5c9;</i></a>
+                        <a *ngIf = "!item.isEditable" class="delete" (click) ="delete(item)" title="Delete" ngbTooltip = "Delete"><i class="material-icons">&#xE872;</i></a>
+                    </td>
+                </tr>
+                <tr *ngIf="isAddedNew">  
+                    <td><input type="text" class="form-control" [(ngModel)] ="itemModel.i_id"></td>
+                    <td><input type="text" class="form-control" [(ngModel)] ="itemModel.Name"></td>
+                    <td><input type="number" class="form-control" [(ngModel)] ="itemModel.price"></td>
+                    <td><input type="file" class="form-control" [(ngModel)] ="itemModel.imgPath" accept="image/*" (change) = "readUrlAdd($event)"></td>
+                    <td>
+                        <a class="add" (click) = "create()" title="Add" ngbTooltip = "Add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                        <a class="cancel" (click) = "setAddedState()" title="cancel"ngbTooltip = "Cancel"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    </td>
+                
+                </tr>                 
+            </tbody>
+        </table>
+    </div>
+</div>
